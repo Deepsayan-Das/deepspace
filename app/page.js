@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
-import Landing from "./sections/Landing";
+import SmoothScroll from "./components/SmoothScroll";
 import VerticalNav from "./components/VerticalNav";
 import Hero from "./sections/Hero";
 import Preloader from "./components/Preloader";
@@ -19,6 +19,7 @@ export default function Home() {
   return (
     <>
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+
       <div className={`flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500 overflow-x-hidden`}>
 
         <VerticalNav />

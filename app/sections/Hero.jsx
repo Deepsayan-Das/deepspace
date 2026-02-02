@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'motion/react'
+import { motion, useAnimation } from 'framer-motion'
 
 import '../stylesheets/landings.css';
 import Noise from '../components/Noise';
@@ -12,7 +12,6 @@ const Hero = () => {
     const radarControls = useAnimation();
 
     useEffect(() => {
-        // Delay to ensure smooth entry
         const timer = setTimeout(() => setIsLoaded(true), 100);
         setWindowSize({ width: window.innerWidth, height: window.innerHeight });
 
@@ -27,7 +26,6 @@ const Hero = () => {
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('resize', handleResize);
 
-        // Trigger radar expansion
         radarControls.start({
             scale: 1,
             opacity: 1,
@@ -41,11 +39,9 @@ const Hero = () => {
         }
     }, [radarControls]);
 
-    // Safety check for server-side rendering
     const parallaxX = windowSize.width ? (mousePosition.x - windowSize.width / 2) * 0.01 : 0;
     const parallaxY = windowSize.height ? (mousePosition.y - windowSize.height / 2) * 0.01 : 0;
 
-    // Container variants for staggered children
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -57,7 +53,6 @@ const Hero = () => {
         }
     };
 
-    // Slide up fade in for text elements
     const slideUpVariants = {
         hidden: {
             opacity: 0,
@@ -75,7 +70,6 @@ const Hero = () => {
         }
     };
 
-    // Glitch reveal for titles
     const glitchVariants = {
         hidden: {
             opacity: 0,
@@ -93,7 +87,6 @@ const Hero = () => {
         }
     };
 
-    // Scale up for hex address
     const hexVariants = {
         hidden: {
             opacity: 0,
@@ -112,7 +105,6 @@ const Hero = () => {
         }
     };
 
-    // Radar pulse animation
     const radarPulseVariants = {
         hidden: {
             scale: 0.5,
@@ -129,8 +121,20 @@ const Hero = () => {
         })
     };
 
+    // Function to handle smooth scroll to contact section
+    const scrollToContact = () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <motion.div
+            id="hero"
             className='min-h-screen w-full bg-[#0a0a0a] font-mono relative overflow-hidden flex flex-col'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -154,9 +158,7 @@ const Hero = () => {
                 }}
             />
 
-
-
-            {/* Hex address with dramatic entry */}
+            {/* Hex address */}
             <motion.h1
                 className='text-4xl md:text-7xl font-bold absolute top-[15%] right-[5%] md:right-[10%] z-0 text-white opacity-10 font-inter'
                 variants={hexVariants}
@@ -220,8 +222,6 @@ const Hero = () => {
                 </motion.div>
             </motion.div>
 
-
-
             <main className='min-h-screen w-full px-6 md:w-[90%] md:px-0 md:self-end flex flex-col justify-center md:block'>
                 <motion.div
                     className='mt-[30%] md:mt-[10%]'
@@ -245,7 +245,7 @@ const Hero = () => {
                         </p>
                     </motion.div>
 
-                    {/* Main titles with glitch effect */}
+                    {/* Main titles */}
                     <motion.h1
                         className='text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none'
                         variants={glitchVariants}
@@ -318,6 +318,7 @@ const Hero = () => {
                         whileHover={{
                             boxShadow: '0 0 20px rgba(196, 255, 0, 0.5)',
                         }}
+                        onClick={scrollToContact}
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             INITIALIZE TRANSMISSION
@@ -413,8 +414,6 @@ const Hero = () => {
                     }}
                 />
             </motion.div>
-
-
         </motion.div>
     )
 }

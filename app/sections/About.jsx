@@ -282,6 +282,9 @@ const About = () => {
                                 boxShadow: '0 0 20px rgba(107, 114, 128, 0.5)',
                             }}
                             whileTap={{ scale: 0.98 }}
+                            onClick={() => {
+                                window.open('/DeepsayanDas.pdf', '_blank');
+                            }}
                         >
                             <Download className='w-4 h-4' strokeWidth={3} />
                             <span className="relative z-10 flex items-center gap-2">

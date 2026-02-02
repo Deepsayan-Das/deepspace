@@ -7,10 +7,9 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { icon: <Github className='w-5 h-5' />, label: 'GITHUB', url: '#' },
-        { icon: <Linkedin className='w-5 h-5' />, label: 'LINKEDIN', url: '#' },
-        { icon: <Twitter className='w-5 h-5' />, label: 'TWITTER', url: '#' },
-        { icon: <Mail className='w-5 h-5' />, label: 'EMAIL', url: '#' }
+        { icon: <Github className='w-5 h-5' />, label: 'GITHUB', url: 'https://github.com/Deepsayan-Das' },
+        { icon: <Linkedin className='w-5 h-5' />, label: 'LINKEDIN', url: 'https://www.linkedin.com/in/deepsayan-das-3134a6326/' },
+        { icon: <Mail className='w-5 h-5' />, label: 'EMAIL', url: 'mailto:deepsayandas274@gmail.com' }
     ];
 
     const quickLinks = [
@@ -62,8 +61,8 @@ const Footer = () => {
                         <div className='flex items-center gap-2 mb-4'>
                             <div className='text-[#c4ff00] text-3xl font-bold'>Λ</div>
                             <div>
-                                <h3 className='text-xl font-black text-white tracking-tight'>DIGITAL</h3>
-                                <p className='text-xs text-gray-600 tracking-widest'>DOMAIN_SYSTEM</p>
+                                <h3 className='text-xl font-black text-white tracking-tight'>DEEPSPACE</h3>
+                                <p className='text-xs text-gray-600 tracking-widest'>_SYSTEM</p>
                             </div>
                         </div>
                         <p className='text-sm text-gray-500 leading-relaxed'>

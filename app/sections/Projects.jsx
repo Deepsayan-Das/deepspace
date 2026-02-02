@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motion'
+import Image from 'next/image'
 import Noise from '../components/Noise'
 import { Github } from 'lucide-react'
 
@@ -23,10 +24,34 @@ const Projects = () => {
 
     // Project data
     const projects = [
-        { id: 1, title: "Project 1" },
-        { id: 2, title: "Project 2" },
-        { id: 3, title: "Project 3" },
-        { id: 4, title: "Project 4" }
+        {
+            id: 1,
+            title: "Equalfi",
+            image: "/equalfi.png",
+            websiteUrl: "https://www.equalfi.online/",
+            githubUrl: "https://github.com/Deepsayan-Das/EqualFi"
+        },
+        {
+            id: 2,
+            title: "MindMate",
+            image: "/mindmate.png",
+            websiteUrl: "https://mind-mate-theta.vercel.app/",
+            githubUrl: "https://github.com/Deepsayan-Das/Mind-mate"
+        },
+        {
+            id: 3,
+            title: "GreenLens",
+            image: "/greenlens.png",
+            websiteUrl: "https://green-lens-nine.vercel.app/",
+            githubUrl: "https://github.com/Deepsayan-Das/Green-Lens"
+        },
+        {
+            id: 4,
+            title: "Doum",
+            image: "/doum.png",
+            websiteUrl: "https://doum-cwfo.vercel.app/",
+            githubUrl: ""
+        }
     ];
 
     const handleMouseMove = (e) => {
@@ -54,7 +79,7 @@ const Projects = () => {
             <AnimatePresence mode="wait">
                 {hoveredProject && (
                     <motion.div
-                        className='hidden md:block fixed pointer-events-none z-[100] w-[300px] h-[400px] rounded-sm overflow-hidden'
+                        className='hidden md:block fixed pointer-events-none z-[100] h-[400px] aspect-4/3 rounded-sm overflow-hidden'
                         style={{
                             left: 0,
                             top: 0,
@@ -71,36 +96,14 @@ const Projects = () => {
                             ease: [0.43, 0.13, 0.23, 0.96]
                         }}
                     >
-                        {/* Placeholder div */}
-                        <div className='w-full h-full bg-gradient-to-br from-[#1a1a1a] via-[#0a0a0a] to-[#2a2a2a] relative border-2 border-[#c4ff00] shadow-[0_0_40px_rgba(196,255,0,0.5)]'>
-                            {/* Grid overlay */}
-                            <div
-                                className='absolute inset-0 opacity-30'
-                                style={{
-                                    backgroundImage: `
-                                        linear-gradient(to right, #c4ff00 1px, transparent 1px),
-                                        linear-gradient(to bottom, #c4ff00 1px, transparent 1px)
-                                    `,
-                                    backgroundSize: '20px 20px'
-                                }}
+                        <div className='w-full h-full relative border-2 border-[#c4ff00] shadow-[0_0_40px_rgba(196,255,0,0.5)] overflow-hidden'>
+                            <Image
+                                src={hoveredProject.image}
+                                alt={hoveredProject.title}
+                                fill
+                                className='object-contain'
+                                priority
                             />
-
-                            {/* Center content */}
-                            <div className='absolute inset-0 flex flex-col items-center justify-center gap-4'>
-                                <div className='w-20 h-20 border-4 border-[#c4ff00] rounded-sm animate-pulse' />
-                                <p className='text-[#c4ff00] text-xl font-bold tracking-wider'>
-                                    {hoveredProject.title}
-                                </p>
-                                <p className='text-gray-500 text-xs tracking-widest'>
-                                    [IMAGE_PLACEHOLDER]
-                                </p>
-                            </div>
-
-                            {/* Corner accents */}
-                            <div className='absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#c4ff00]' />
-                            <div className='absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#c4ff00]' />
-                            <div className='absolute top-3 left-3 w-2 h-2 bg-[#c4ff00] rounded-full animate-pulse' />
-                            <div className='absolute bottom-3 right-3 w-2 h-2 bg-[#c4ff00] rounded-full animate-pulse' style={{ animationDelay: '0.5s' }} />
                         </div>
                     </motion.div>
                 )}
@@ -142,6 +145,19 @@ const Projects = () => {
 
 // Individual Project Card Component
 const ProjectCard = ({ project, index, onHover }) => {
+    const handleProjectClick = () => {
+        if (project.websiteUrl) {
+            window.open(project.websiteUrl, '_blank');
+        }
+    };
+
+    const handleGithubClick = (e) => {
+        e.stopPropagation(); // Prevent triggering project click
+        if (project.githubUrl) {
+            window.open(project.githubUrl, '_blank');
+        }
+    };
+
     return (
         <motion.div
             className='project-container h-[50vh] w-[80%] relative flex flex-col items-start justify-center gap-6 cursor-pointer border-2 border-transparent hover:border-[#c4ff00]/20 transition-colors'
@@ -160,6 +176,7 @@ const ProjectCard = ({ project, index, onHover }) => {
                 console.log('Left:', project.title);
                 onHover(null);
             }}
+            onClick={handleProjectClick}
         >
             {/* Project Title */}
             <motion.h1
@@ -177,6 +194,7 @@ const ProjectCard = ({ project, index, onHover }) => {
                 className='text-left text-[#c4ff00] relative z-10'
                 whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
+                onClick={handleGithubClick}
             >
                 <Github className='w-7 h-7 cursor-pointer' />
             </motion.div>

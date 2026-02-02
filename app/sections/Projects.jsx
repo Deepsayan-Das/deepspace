@@ -36,6 +36,7 @@ const Projects = () => {
 
     return (
         <div
+            id='projects'
             className='min-h-screen w-full bg-[#0a0a0a] font-mono relative overflow-hidden flex flex-col'
             onMouseMove={handleMouseMove}
         >
@@ -53,7 +54,7 @@ const Projects = () => {
             <AnimatePresence mode="wait">
                 {hoveredProject && (
                     <motion.div
-                        className='fixed pointer-events-none z-[100] w-[300px] h-[400px] rounded-sm overflow-hidden'
+                        className='hidden md:block fixed pointer-events-none z-[100] w-[300px] h-[400px] rounded-sm overflow-hidden'
                         style={{
                             left: 0,
                             top: 0,
@@ -105,9 +106,9 @@ const Projects = () => {
                 )}
             </AnimatePresence>
 
-            <main className='min-h-screen w-[90%] self-end flex flex-col justify-center items-start gap-10 relative z-10 py-20'>
+            <main className='min-h-screen w-full px-6 md:w-[90%] md:px-0 md:self-end flex flex-col justify-center items-start gap-10 relative z-10 py-20'>
                 <motion.p
-                    className='text-left text-[#c4ff00] text-lg font-extralight italic'
+                    className='text-left text-[#c4ff00] text-sm md:text-lg font-extralight italic'
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
@@ -116,7 +117,7 @@ const Projects = () => {
                 </motion.p>
 
                 <motion.h1
-                    className='text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none'
+                    className='text-4xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none'
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
@@ -162,7 +163,7 @@ const ProjectCard = ({ project, index, onHover }) => {
         >
             {/* Project Title */}
             <motion.h1
-                className='text-[15rem] font-black tracking-tight leading-none mt-2 whitespace-nowrap relative z-10 select-none'
+                className='text-5xl md:text-8xl lg:text-[10rem] xl:text-[15rem] font-black tracking-tight leading-none mt-2 whitespace-normal md:whitespace-nowrap relative z-10 select-none break-words'
                 style={{
                     WebkitTextStroke: '2px rgba(255, 255, 255, 0.3)',
                     color: 'transparent'

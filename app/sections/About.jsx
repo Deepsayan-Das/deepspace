@@ -11,11 +11,11 @@ const About = () => {
     }, []);
 
     return (
-        <div className='min-h-screen w-full bg-[#0a0a0a] font-mono relative overflow-hidden flex flex-col'>
+        <div id='about' className='min-h-screen w-full bg-[#0a0a0a] font-mono relative overflow-hidden flex flex-col'>
 
             {/* Atomic Orbital Animation Background - Positioned Right */}
-            <div className='absolute inset-0 flex items-center justify-end pr-[10%] opacity-15'>
-                <div className='relative w-[500px] h-[500px]'>
+            <div className='absolute inset-0 flex items-center justify-center md:justify-end md:pr-[10%] opacity-15'>
+                <div className='relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] scale-75 md:scale-100'>
 
                     {/* Central Core/Nucleus */}
                     <motion.div
@@ -222,9 +222,9 @@ const About = () => {
                     patternAlpha={15}
                 />
 
-                <main className='h-full w-[75%] ml-[20%] flex flex-col items-start justify-center gap-6 relative z-10'>
+                <main className='h-full w-full px-6 md:px-0 md:w-[75%] md:ml-[20%] flex flex-col items-start justify-center gap-6 relative z-10'>
                     <motion.h1
-                        className='text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none'
+                        className='text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none'
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
@@ -232,7 +232,7 @@ const About = () => {
                         WELL WHO
                     </motion.h1>
                     <motion.h1
-                        className='text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mt-2'
+                        className='text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mt-2'
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
@@ -245,13 +245,13 @@ const About = () => {
                     </motion.h1>
 
                     <motion.div
-                        className='flex gap-2 h-[25%] w-[50%]'
+                        className='flex gap-2 h-auto md:h-[25%] w-full md:w-[50%]'
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                     >
                         <motion.div
-                            className='h-full w-2 bg-[#c4ff00]'
+                            className='h-auto min-h-[100px] w-1 md:w-2 bg-[#c4ff00]'
                             initial={{ height: 0 }}
                             animate={{ height: '100%' }}
                             transition={{ duration: 0.8, delay: 0.8 }}
@@ -266,7 +266,7 @@ const About = () => {
                     </motion.div>
 
                     <motion.div
-                        className='mb-16 flex gap-4'
+                        className='mb-16 flex flex-col md:flex-row gap-8 md:gap-4 w-full md:w-auto'
                         initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         transition={{
@@ -276,7 +276,7 @@ const About = () => {
                         }}
                     >
                         <motion.button
-                            className="group relative bg-transparent border-2 border-gray-500 text-gray-500 px-8 py-4 font-bold text-sm tracking-wider hover:bg-gray-500 hover:text-black transition-all duration-300 overflow-hidden flex items-center gap-2"
+                            className="group relative bg-transparent border-2 border-gray-500 text-gray-500 px-8 py-4 font-bold text-sm tracking-wider hover:bg-gray-500 hover:text-black transition-all duration-300 overflow-hidden flex items-center justify-center gap-2 w-full md:w-auto"
                             whileHover={{
                                 scale: 1.02,
                                 boxShadow: '0 0 20px rgba(107, 114, 128, 0.5)',
@@ -292,12 +292,12 @@ const About = () => {
                             />
                         </motion.button>
 
-                        <div className='h-[250%] w-[20vw] flex flex-col items-end justify-center gap-2 text-right italic'>
-                            <p className='text-md md:text-lg lg:text-xl font-extralight text-gray-500 tracking-tight leading-none w-[80%]'>
+                        <div className='h-auto md:h-[250%] w-full md:w-[20vw] flex flex-col items-center md:items-end justify-center gap-2 text-center md:text-right italic'>
+                            <p className='text-md md:text-lg lg:text-xl font-extralight text-gray-500 tracking-tight leading-none w-full md:w-[80%]'>
                                 Download Availability
                             </p>
                             <motion.p
-                                className='text-lg md:text-xl lg:text-2xl font-bold text-[#c4ff00] tracking-tight leading-none w-[80%]'
+                                className='text-lg md:text-xl lg:text-2xl font-bold text-[#c4ff00] tracking-tight leading-none w-full md:w-[80%]'
                                 animate={{
                                     opacity: [0.6, 1, 0.6]
                                 }}

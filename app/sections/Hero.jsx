@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'motion/react'
-import VerticalNav from '../components/VerticalNav';
+
 import '../stylesheets/landings.css';
 import Noise from '../components/Noise';
 
@@ -158,7 +158,7 @@ const Hero = () => {
 
             {/* Hex address with dramatic entry */}
             <motion.h1
-                className='text-7xl font-bold absolute top-[15%] right-[10%] z-0 text-white opacity-10 font-inter'
+                className='text-4xl md:text-7xl font-bold absolute top-[15%] right-[5%] md:right-[10%] z-0 text-white opacity-10 font-inter'
                 variants={hexVariants}
                 initial="hidden"
                 animate="visible"
@@ -220,11 +220,11 @@ const Hero = () => {
                 </motion.div>
             </motion.div>
 
-            <VerticalNav />
 
-            <main className='min-h-screen w-[90%] self-end'>
+
+            <main className='min-h-screen w-full px-6 md:w-[90%] md:px-0 md:self-end flex flex-col justify-center md:block'>
                 <motion.div
-                    className='mt-[10%]'
+                    className='mt-[30%] md:mt-[10%]'
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
@@ -240,21 +240,21 @@ const Hero = () => {
                             animate={{ height: 40 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                         />
-                        <p className="text-gray-400 text-2xl font-extralight tracking-wider leading-relaxed mb-1">
+                        <p className="text-gray-400 text-lg md:text-2xl font-extralight tracking-wider leading-relaxed mb-1">
                             WELCOME TO MY
                         </p>
                     </motion.div>
 
                     {/* Main titles with glitch effect */}
                     <motion.h1
-                        className='text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none'
+                        className='text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none'
                         variants={glitchVariants}
                     >
                         DIGITAL
                     </motion.h1>
 
                     <motion.h1
-                        className='text-7xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mt-2'
+                        className='text-5xl md:text-8xl lg:text-9xl font-black tracking-tight leading-none mt-2'
                         variants={glitchVariants}
                         style={{
                             WebkitTextStroke: '2px rgba(255, 255, 255, 0.3)',
@@ -267,7 +267,7 @@ const Hero = () => {
 
                 {/* Description section */}
                 <motion.div
-                    className='max-w-md mb-12 flex gap-4'
+                    className='max-w-md mb-12 flex gap-4 mt-8'
                     initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 0.9 }}
@@ -280,7 +280,7 @@ const Hero = () => {
                     />
 
                     <motion.div
-                        className="text-xl font-extralight"
+                        className="text-lg md:text-xl font-extralight"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 1.1 }}
@@ -340,7 +340,7 @@ const Hero = () => {
 
                 {/* Project description */}
                 <motion.div
-                    className='flex flex-col items-end justify-between w-[40%] ml-[50%] mt-[-10%]'
+                    className='flex flex-col items-start md:items-end justify-between w-full md:w-[40%] md:ml-[50%] mt-0 md:mt-[-10%] pb-20 md:pb-0'
                     initial={{ opacity: 0, x: 30 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, delay: 1.5 }}
@@ -358,7 +358,7 @@ const Hero = () => {
                             {`"SUPERNOVA"`}
                         </motion.p>
                     </div>
-                    <div className="text-right">
+                    <div className="text-left md:text-right mt-4 md:mt-0">
                         <p className="text-[9px] text-gray-600 tracking-wider mb-1">
                             SYSTEM AUTOMATED_AGENT
                         </p>

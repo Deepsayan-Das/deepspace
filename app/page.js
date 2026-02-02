@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import Landing from "./sections/Landing";
+import VerticalNav from "./components/VerticalNav";
 import Hero from "./sections/Hero";
 import Preloader from "./components/Preloader";
 import Noise from "./components/Noise";
@@ -20,6 +21,7 @@ export default function Home() {
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <div className={`flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black ${isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500 overflow-x-hidden`}>
 
+        <VerticalNav />
         <Hero />
         <About />
         <Projects />

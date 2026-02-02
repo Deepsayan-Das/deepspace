@@ -18,6 +18,7 @@ const Contact = () => {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         setFormData({
@@ -26,22 +27,38 @@ const Contact = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setError(null);
 
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsSubmitted(true);
+                // Reset after 5 seconds
+                setTimeout(() => {
+                    setIsSubmitted(false);
+                    setFormData({ name: '', email: '', message: '' });
+                }, 5000);
+            } else {
+                setError(data.error || 'Failed to send message');
+            }
+        } catch (err) {
+            console.error('Submit error:', err);
+            setError('Network error. Please try again.');
+        } finally {
             setIsSubmitting(false);
-            setIsSubmitted(true);
-            console.log('Form submitted:', formData);
-
-            // Reset after 5 seconds
-            setTimeout(() => {
-                setIsSubmitted(false);
-                setFormData({ name: '', email: '', message: '' });
-            }, 5000);
-        }, 2000);
+        }
     };
 
     return (
@@ -190,6 +207,11 @@ const Contact = () => {
                                     <p className='text-[10px] text-gray-600 tracking-widest'>_UPLINK_ID</p>
                                     <p className='text-[10px] text-[#c4ff00] tracking-widest'>SECURE_PATH</p>
                                 </div>
+                                {error && (
+                                    <div className='bg-red-500/10 border border-red-500/50 p-3 rounded'>
+                                        <p className='text-red-500 text-xs tracking-wide'>{error}</p>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Form Fields */}

@@ -180,7 +180,7 @@ const ProjectCard = ({ project, index, onHover }) => {
         >
             {/* Project Title */}
             <motion.h1
-                className='text-5xl md:text-8xl lg:text-[10rem] xl:text-[15rem] font-black tracking-tight leading-none mt-2 whitespace-normal md:whitespace-nowrap relative z-10 select-none break-words'
+                className='text-5xl md:text-7xl lg:text-9xl xl:text-[10rem] font-black tracking-tight leading-none mt-2 whitespace-normal md:whitespace-nowrap relative z-10 select-none break-words'
                 style={{
                     WebkitTextStroke: '2px rgba(255, 255, 255, 0.3)',
                     color: 'transparent'

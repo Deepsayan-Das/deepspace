@@ -109,7 +109,7 @@ const Projects = () => {
                 )}
             </AnimatePresence>
 
-            <main className='min-h-screen w-full px-6 md:w-[90%] md:px-0 md:self-end flex flex-col justify-center items-start gap-10 relative z-10 py-20'>
+            <main className='min-h-screen w-full px-6 md:w-[85%] md:px-0 md:self-end flex flex-col justify-center items-start gap-10 relative z-10 py-20 mr-12'>
                 <motion.p
                     className='text-left text-[#c4ff00] text-sm md:text-lg font-extralight italic'
                     initial={{ opacity: 0, x: -20 }}
